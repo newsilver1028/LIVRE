@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 구매 Mapper -->
+<mapper namespace="kr.co.bookstore.mapper.SaleMapper">
+
+	<!-- salebook 테이블에 책 판매 폼에 입력한 모든 정보 삽입. -->
+   <insert id="sale">
+      insert into salebook(publisher,bookname,author,etc,writer,bno,price,tf,datalist,genre)
+      values (#{publisher},#{bookName},#{author},#{etc, jdbcType=VARCHAR},#{writer},#{bno},#{price},'0','수취 요청',#{genre})
+
+      <selectKey keyProperty="bno" order="BEFORE"
+         resultType="long">
+         select seq_booksale.nextval from dual
+      </selectKey>
+   </insert>
+   
+      <!-- 사용자 ID와 일치하는 상품정보 불러오기. -->
+   <select id="findbook" resultType="kr.co.bookstore.domain.SaleVO">
+      	select*from salebook where writer=#{writer} order by bno
+   </select>
+  
+	<!-- 상품번호와 일치하는 상품 삭제. -->
+   <delete id="delete">
+      delete salebook where bno=#{bno}
+   </delete> 
+   
+   
+      <!-- 상품번호와 일치하는 상품 정보 업데이트 (사용자 페이지) -->
+   <update id="update">
+      update salebook set publisher=#{publisher},
+      bookName=#{bookName},
+      author=#{author},price=#{price},
+      etc=#{etc, jdbcType=VARCHAR},
+      updateDate=sysdate,
+      genre=#{genre}
+      where bno=#{bno}
+   </update>
+   
+   <!-- 상품번호와 일치하는 salebook 테이블의 정보 최신순으로 불러오기. -->
+   <select id="read" resultType="kr.co.bookstore.domain.SaleVO">
+      select*from salebook where bno=#{bno} order by bno
+   </select>   
+   
+   <!-- salebook 테이블의 정보 최신순으로 불러오기. -->
+   <select id="getList" resultType="kr.co.bookstore.domain.SaleVO">
+      <![CDATA[
+      select * from salebook where bno > 0 order by bno desc
+      ]]>
+   </select>
+   
+   <!-- 상품번호와 일치하는 상품 정보 업데이트 (관리자 페이지) -->
+   <update id="up2list">
+      update salebook set publisher=#{publisher},
+      bookName=#{bookName},
+      price=#{price},
+      author=#{author},
+      etc=#{etc, jdbcType=VARCHAR},
+      tf=#{tf},
+      updateDate=sysdate,
+      genre=#{genre}
+      where bno=#{bno}
+   </update>
+   
+      <!-- 상품번호와 일치하는 상품의 상태 변경. -->
+   <update id="updatelist">
+     	 update salebook set datalist=#{dataList} where bno=#{bno}
+   </update>
+   
+   	<!-- '결제 완료' 상태인 상품은 관리자만 읽을 수 있도록 변경. -->
+   <update id="orderdatalist">
+   	   update salebook set datalist='결제 완료', tf='0' where bno=#{bno}
+   </update>
+   
+   <!-- 관리자페이지의 '교환'관리 -->
+   <select id="getlistlist" resultType="kr.co.bookstore.domain.SaleVO">
+     	 select * from salebook 
+     	 where datalist='교환 요청'or datalist='교환 승인'or datalist='교환 완료' or datalist='교환 취소'
+   </select>
+   
+   <!-- 관리자페이지의 '반품'관리 -->
+   <select id="getlistlist2" resultType="kr.co.bookstore.domain.SaleVO">
+    	  select * from salebook 
+    	  where datalist='반품 요청' or datalist='반품 승인' or datalist='반품 완료' or datalist='반품 취소'
+   </select>
+   
+   <!-- 관리자페이지의 '배송'관리 -->
+   <select id="getlistlist3" resultType="kr.co.bookstore.domain.SaleVO">
+     	 select * from salebook 
+     	 where datalist='결제 취소' or datalist='결제 완료' or datalist='상품 준비중' or datalist='배송 중' or datalist='배송 완료'
+   </select>
+   
+   <!-- 관리자페이지의 '수취'관리 -->
+   <select id="getlistlist5" resultType="kr.co.bookstore.domain.SaleVO">
+      	select * from salebook 
+      	where datalist='수취 요청' or datalist='수취 승인' or datalist='수취 완료' or datalist='수취 취소' or datalist='판매 중'
+   </select>
+   
+   <!-- 상품번호와 일치하는 상품의 수취번호 업데이트. -->
+   <update id="snsubmit">
+     	 update salebook set shippingNumber=#{dataList} where bno=#{bno}
+   </update>
+
+   <!-- 상품의 총 개수 검색. -->
+   <select id="getTotalCount" resultType="int">
+      select count(bno) from salebook where
+
+      <include refid="criteria"></include>
+   
+      <![CDATA[
+      tf=1
+      ]]>
+   </select>
+   
+     <!-- 게시물 페이징 처리. -->
+	<select id="getListWithPaging" resultType="kr.co.bookstore.domain.SaleVO">
+      <![CDATA[
+      select *
+      from
+      (
+      select /*+INDEX_DESC(salebook pk_sale) */ 
+      rownum rn,
+      publisher,bookname,author,bno,shippingnumber,etc,writer,updatedate,
+      price,tf,datalist,genre
+      from 
+      salebook
+      where 
+      ]]>
+
+      <include refid="criteria"></include>
+
+      <![CDATA[
+      rownum<=#{pageNum}*#{amount} and tf=1 
+      )
+      where rn>(#{pageNum}-1)*#{amount} and tf=1 
+      ]]>order by updatedate desc</select>
+      
+   	<!-- 각 장르별 상품 개수 검색. -->
+      <select id="getGenreCount" resultType="int">
+      select count(bno) from salebook where
+      <include refid="criteria"></include>
+   
+      <![CDATA[
+      tf=1 and genre=#{genre}
+      ]]>
+   </select>
+   
+      <!-- 각 장르별 게시물 페이징 처리. -->
+      <select id="getListGenrePaging"
+      resultType="kr.co.bookstore.domain.SaleVO">
+      <![CDATA[
+      select *
+      from (
+      select /*+INDEX_DESC(salebook pk_sale) */ 
+      rownum rn,
+      publisher,bookname,author,bno,shippingnumber,etc,writer,updatedate,
+      price,tf,datalist,genre
+      from 
+      salebook
+      where 
+      ]]>
+      <include refid="criteria"></include>
+      <![CDATA[
+      rownum<=#{pageNum}*#{amount} and tf=1 and genre=#{genre})
+      where rn>(#{pageNum}-1)*#{amount} and tf=1 and genre=#{genre}
+      ]]>order by updatedate  desc</select>
+      
+   
+   <!-- 상품번호와 일치하는 상품의 게시물 읽기 권한 변경 (관리자->모든 사용자) -->
+   <update id="tfchange">
+   		update salebook set tf='1' where bno=#{bno}
+   </update>
+   
+
+	<!-- '출판사', '책 이름', '작가' 별 검색 기능. -->
+   <sql id="criteria">
+      <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+         <foreach item="type" collection="typeArr">
+            <trim prefix="OR">
+               <choose>
+                  <when test="type=='P'.toString()">
+                     publisher like '%'||#{keyword}||'%'
+                  </when>
+                  <when test="type=='B'.toString()">
+                     bookName like '%'||#{keyword}||'%'
+                  </when>
+                  <when test="type=='A'.toString()">
+                     author like '%'||#{keyword}||'%'
+                  </when>
+                  
+               </choose>
+            </trim>
+         </foreach>
+      </trim>
+   </sql>
+
+ 
+
+</mapper>

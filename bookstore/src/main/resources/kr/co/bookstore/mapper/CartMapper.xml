@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 장바구니 Mapper --> 
+<mapper namespace="kr.co.bookstore.mapper.CartMapper">
+
+	<!-- 장바구니 리스트 불러오기 -->
+	<select id="cartList" resultType="kr.co.bookstore.domain.CartVO">
+		select*from cart
+	</select>
+	
+	<!-- 사용자 ID와 상품번호를 장바구니에 삽입 -->
+	<insert id="cartadd">
+		insert into cart(username,bno) values(#{userName},#{bno})
+	</insert>
+	
+	<!-- 사용자 ID와 일치하는 상품번호 불러오기 -->
+	<select id="cart" resultType="Long">
+		select bno from cart where username=#{userName}
+	</select>
+	
+	<!-- 상품번호와 사용자 ID와 일치하는 상품 장바구니에서 삭제 -->
+	<delete id="delete">
+		delete cart where bno=#{bno} and username=#{userName}
+	</delete>
+	
+</mapper>

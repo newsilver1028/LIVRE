@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 로그인, 회원가입, 아이디 찾기, 비밀번호 찾기 Mapper -->
+<mapper namespace="kr.co.bookstore.mapper.MemberMapper">
+	
+	<!-- 회원 정보 테이블과 회원 권한 테이블을 조인하여 1개의 타입으로 회원 관련 정보를 리턴 -->
+	<select id="read" resultMap="logMap">
+		select mem.userName, userpw, usernikname, enabled, regdate, updatedate, auth
+		from log mem left outer join log_auth auth on mem.userName=auth.userName
+		where mem.userName=#{userName}
+	</select>
+	
+	<!-- 회원가입 폼에 입력한 정보를 log 테이블에 삽입. -->
+	<insert id="join">
+		insert into log(username, userpw, usernikname,userpn, usermail,useradd, pwfind,answer,birth) 
+		values(#{userName}, #{userpw}, #{usernikname},#{userpn}, #{usermail},#{useradd}, #{pwfind},#{answer},#{birth})
+	</insert>
+	
+	<!-- 사용자 ID, 비밀번호 찾기 질문, 답변이 모두 일치할 때 비밀번호 불러오기. -->
+	<select resultType="String" id="findpw">
+		select userpw from log 
+		where userName=#{userName}and pwfind=#{pwfind} and answer=#{answer} 
+	</select>
+
+	<!-- 사용자 ID와 권한을 log_auth테이블에 삽입. -->
+	<insert id="userauth">
+		insert into log_auth(username,auth)
+		values(#{userName},'ROLE_USER')
+	</insert>	
+	
+	<!-- 아이디 찾기 폼에 입력한 정보와 log 테이블의 정보가 일치할 때 사용자 ID 불러오기. -->
+	<select id="findid" resultType="String">
+		select username from log 
+		where usernikname=#{usernikname} and birth=#{birth} 
+		and userpn=#{userpn} and usermail=#{usermail}
+	</select>
+	
+	<!-- 입력한 ID와 사용자 ID의 일치 여부  -->
+	<select resultType="int" id="idCheck">
+	select count(*) from log where username = #{memberId} 
+	</select>
+	
+	<!-- 입력한 ID와 사용자 ID가 일치할때 log 테이블의 정보 불러오기. -->
+	<select id="loginfo" resultMap="logMap">
+		select * from log where userName=#{userName}
+	</select>
+	
+	<!-- 사용자 ID의 log 테이블 비밀번호 업데이트. -->
+	<update id="update">
+		update log set userpw = #{userpw}
+		where userName=#{userName} 
+	</update>
+	
+	<!-- 사용자 ID와 일치하는 log 테이블의 정보 수정. -->
+	<update id="modifyinfo">
+		update log set usernikname = #{usernikname},birth=#{birth}, userpn=#{userpn}, 
+		usermail=#{usermail}, useradd=#{useradd}, pwfind=#{pwfind}, answer=#{answer} 
+		where userName=#{userName} 
+	</update>
+	
+	<!-- 사용자 ID와 일치하는 log 테이블의 정보 수정. -->
+	<update id="modifyinfo2">
+		update log set usernikname = #{usernikname}, userpn=#{userpn}, usermail=#{usermail}, 
+		useradd=#{useradd}, pwfind=#{pwfind}, answer=#{answer} 
+		where userName=#{userName} 
+	</update>
+	
+		<resultMap type="kr.co.bookstore.domain.LoginVO" id="logMap">
+		<result property="userName" column="username" />
+		<result property="userpw" column="userpw" />
+		<result property="usernikname" column="usernikname" />
+		<result property="regDate" column="regdate" />
+		<result property="updateDate" column="updatedate" />
+		<result property="userpn" column="userpn" />
+		<result property="usermail" column="usermail" />
+		<result property="useradd" column="useradd" />
+		<result property="answer" column="answer" />
+		<result property="pwfind" column="pwfind" />
+		<collection property="authList" resultMap="authMap" />
+	</resultMap>
+	
+	<resultMap type="kr.co.bookstore.domain.AuthVO" id="authMap">
+		<result property="userName" column="userName" />
+		<result property="auth" column="auth" />
+	</resultMap>
+
+	
+</mapper>

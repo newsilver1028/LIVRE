@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시물 사진 Mapper -->
+<mapper namespace="kr.co.bookstore.mapper.BookPhotoMapper">
+
+	<!-- 게시물 사진 삽입 -->
+	<insert id="insert">
+		insert into salebookphoto (uuid, uploadpath,fileName,filetype, bno) 
+		values(#{uuid}, #{uploadPath},#{fileName},#{fileType},#{bno})
+	</insert>
+	
+	<!-- 게시물 사진 삭제 -->
+	<delete id="delete">
+		delete from salebookphoto where uuid=#{uuid}
+	</delete>
+	
+	<!-- 상품번호와 맞는 게시물 사진 검색 -->
+	<select id="findBybno"
+		resultType="kr.co.bookstore.domain.GettingBookPhoto">
+		select*from salebookphoto where bno=#{bno}
+	</select>
+	
+	<!-- 상품번호와 맞는 게시물 사진 삭제 -->
+	<delete id="deleteAll">
+		delete from salebookphoto where bno =#{bno}
+	</delete>	
+	
+	<!-- 모든 게시물 사진 불러오기 -->
+	<select id="getPhoto"
+		resultType="kr.co.bookstore.domain.GettingBookPhoto">
+		<![CDATA[
+		select * from salebookphoto where bno > 0
+		]]>
+	</select>
+	
+	<!-- 사용자와 맞는 게시물 사진 불러오기 -->
+	<select id="findBywrite"
+		resultType="kr.co.bookstore.domain.GettingBookPhoto">
+		select*from salebookphoto where write=#{wrtie}
+	</select>
+
+
+</mapper>

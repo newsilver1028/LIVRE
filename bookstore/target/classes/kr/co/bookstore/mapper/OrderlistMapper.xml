@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 주문내역 Mapper -->
+<mapper namespace="kr.co.bookstore.mapper.OrderlistMapper">
+
+<!-- 사용자 ID와 상품번호를 주문내역에 삽입. -->
+<insert id="orderlistAdd">
+   insert into buy(username,bno) values(#{userName},#{bno})
+</insert>
+
+<!-- 사용자 ID와 일치하는 buy 테이블의 상품번호 불러오기. -->
+<select id="buy2" resultType="Long">
+   select bno from buy where username=#{userName}
+</select>
+
+<!-- buy 테이블의 모든 정보 불러오기. -->
+<select id="buylist" resultType="kr.co.bookstore.domain.BuyList">
+   select*from buy where bno>0
+</select>
+
+</mapper>
