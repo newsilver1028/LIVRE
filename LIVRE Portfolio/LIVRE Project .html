@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>LIVRE [ 중고 책 거래 사이트 ]</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7f643d18-1a03-4394-9a34-c00e4c6ae5a8" class="page sans"><header><h1 class="page-title">LIVRE [ 중고 책 거래 사이트 ]</h1></header><div class="page-body"><h3 id="91d3b078-70e1-4fb3-b00a-0fd04776f0af" class="">Livre [fr] 책, 서적 </h3><figure id="d45b91ce-da55-4e51-a712-7b6dccef75f0" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/FireShotCapture093-LIVRE-localhost.png"><img style="width:1920px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/FireShotCapture093-LIVRE-localhost.png"/></a></figure><p id="b80886c7-cd29-4f79-a186-8b49669bfa2a" class="">
+</p><h1 id="1cfcfb15-2a3b-400f-a9a0-d7eaad99bb7d" class="">목차</h1><h3 id="c494894c-12ea-4ca2-821e-b5f745e10ee5" class="">1. 팀원 및 역할</h3><h3 id="ad09f105-bc37-4e48-854e-1d181791624e" class="">2. 개발 도구</h3><h3 id="3917bc01-5f66-4eee-98cc-78bbac42ecdc" class="">3. 기획 의도</h3><h3 id="a0a80f39-8ac7-47a0-9bb3-573e3007e727" class="">4. 페이지 구조</h3><h3 id="93d60b5f-e546-4f66-88f9-90a5d468a937" class="">5. API 명세서</h3><h3 id="263276ec-99c3-4f12-9798-68065f3bfa0e" class="">6. DB 명세서</h3><h3 id="f0ec79e4-a9e3-4e15-a5de-a837887d8527" class="">7. 장점 및 단점</h3><h3 id="e7829e9c-41ca-45a0-bb35-d1330dd98e0f" class="">8. 프로젝트 소감 </h3><p id="3791ea0d-90f1-4559-91b1-ef3248462a12" class="">
+</p><hr id="dc673cf3-0194-4cb9-a64b-5abc42fcde09"/><p id="55c4af4f-5f29-45d7-871a-7dd7e7a86777" class="">
+</p><h2 id="4c839d36-a878-4687-9764-fabb68882ae7" class="">1. 팀원 및 역할</h2><h2 id="2c2b10d2-65f2-45c0-b4ff-cb958671451d" class="">✓ 인원 : 3명</h2><p id="1bb3d36e-fa06-4084-8eda-168e1520640d" class="">
+</p><div id="df2ec99b-1e40-4d41-94ef-01c267703a08" class="column-list"><div id="af49ed5e-3b29-4052-9e1c-61ec22edb7a1" style="width:33.333333333333336%" class="column"><h3 id="4ac14069-6062-4f25-a166-9c0806fd05d5" class="">                🧑🏻‍💻 이용준 팀장</h3><hr id="b9a788eb-4068-4a2d-b5fd-f9f15bf41907"/></div><div id="d8cc60cf-2a5f-4cd8-9f83-4c1518022a8c" style="width:33.333333333333336%" class="column"><h3 id="bb69385b-08df-436f-9abd-4427c09b3ae8" class="">                👩🏻‍💻 신가은 팀원</h3><hr id="225c11f5-d38d-4555-919f-0e32722c6307"/></div><div id="95676d6b-9005-471a-a065-8753d105bab5" style="width:33.33333333333333%" class="column"><h3 id="6ba6b8f3-6f6b-45a0-b824-5bf810f2ef96" class="">               👨🏻‍💻 권기완 팀원</h3><hr id="00740a52-f8e8-4e9d-b636-a0a9d701dc00"/></div></div><div id="5e1df794-db82-47ce-aaf7-a92b4fde5991" class="column-list"><div id="03f82b26-0f36-4599-ad60-883bde431090" style="width:3.125%" class="column"><p id="4931a8e8-803d-4cfd-bef9-7664ebe5918d" class="">
+</p></div><div id="b25c6ff1-f840-4d90-b398-87f33311ccae" style="width:34.375%" class="column"><figure id="28da3a9a-8614-4c31-a967-bb6ea78fd850" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/IMG_4287.jpg"><img style="width:192px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/IMG_4287.jpg"/></a></figure><p id="05bdc290-a8f4-47e4-ba87-d4a915ba5ade" class="">
+</p></div><div id="28a390e0-71d6-4e2c-8292-bfb1d4103ff4" style="width:34.375%" class="column"><figure id="f101227c-9c17-4dbf-a1f1-d223be5cac2f" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/3472403969948774965_20200807155916726.jpg"><img style="width:192px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/3472403969948774965_20200807155916726.jpg"/></a></figure></div><div id="c45d3c7a-fea2-465e-8cf6-6add38330113" style="width:28.125000000000018%" class="column"><figure id="9ddaf660-08e4-4ac0-bccd-0587721537b0" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/KakaoTalk_20210305_163425884.jpg"><img style="width:192px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/KakaoTalk_20210305_163425884.jpg"/></a></figure></div></div><div id="8f69b34a-08df-40a0-8b6b-352fcc770cec" class="column-list"><div id="3bfa7da4-649b-4ced-ab97-536a15bf6d85" style="width:33.333333333333336%" class="column"><figure class="block-color-red_background callout" style="white-space:pre-wrap;display:flex" id="e69f98e9-409f-46b2-b77e-d2bb811767f1"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">프로젝트 기획 및 관리</div></figure><figure class="block-color-red_background callout" style="white-space:pre-wrap;display:flex" id="67302e09-916b-41f7-b633-f79bda850346"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">오류 수정 및 관리</div></figure><figure class="block-color-red_background callout" style="white-space:pre-wrap;display:flex" id="80488953-9bd9-4f6c-b1a7-ec6a6b670ced"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">기타 부가 기능 구현</div></figure></div><div id="4a0eeb35-6aaf-4053-8e16-7a8f48ca9b20" style="width:33.333333333333336%" class="column"><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="006d599f-803b-4eab-b8cd-3bcf53bb82e1"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">DB 설계 및 구축</div></figure><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="8f67a882-56eb-4528-8a84-b34f4cd8c7ec"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">백엔드 서버 환경 구축</div></figure></div><div id="62804740-740c-4f97-8e5f-4477f1ea0c46" style="width:33.33333333333333%" class="column"><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="729672dc-1069-4743-9b5e-65a8c6c4b87b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">UI 설계</div></figure><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="d3643ace-ac8b-44d1-b480-57b09b8f00d2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">프론트엔드 핵심 기능 구현</div></figure></div></div><p id="ca02656a-0ad3-444f-8a1b-5088eff08012" class="">
+</p><hr id="268a63af-e1ff-42cd-8129-71cb8e41af7a"/><p id="2cdb116a-f763-46c9-b7e2-d31cda6b241a" class="">
+</p><h2 id="0d0a496f-04e1-4986-bd4c-ed3871a36657" class="">2. 개발 도구</h2><p id="0ad99f49-5767-4e55-8a3c-a82398fc11dd" class="">
+</p><p id="a2972f44-07d9-4170-846f-3c5e3fb86d85" class="">
+</p><div id="14247bdb-b77a-4170-b73c-0331021af4cf" class="column-list"><div id="2b457004-c4a5-4e8d-adcc-47699eeb7452" style="width:28.125%" class="column"><p id="5ce23a91-f28e-4ed4-9d05-ca56a8b36c31" class="">
+</p><p id="9d01d5ac-315a-44a6-8009-5ae251d45a50" class="">
+</p><h3 id="5065120e-1220-4659-80e4-74e9423f725e" class="">Frontend</h3></div><div id="87860b93-c40d-444c-8f43-8431956d7483" style="width:25.721293531148998%" class="column"><figure id="4300095e-24cf-41cf-9e3a-d80c0adb10b3" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/BD3AA64E-C8C9-4BB0-A71A-EDA06E81A1A6_4_5005_c.jpeg"><img style="width:132px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/BD3AA64E-C8C9-4BB0-A71A-EDA06E81A1A6_4_5005_c.jpeg"/></a></figure></div><div id="4670ef6a-fb07-450d-9de4-3893e7c03a6c" style="width:24.034195252228436%" class="column"><figure id="47f3794c-b7f9-47ca-a1ac-a60c6d2acfc8" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/BD3AA64E-C8C9-4BB0-A71A-EDA06E81A1A6_4_5005_c%201.jpeg"><img style="width:132px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/BD3AA64E-C8C9-4BB0-A71A-EDA06E81A1A6_4_5005_c%201.jpeg"/></a></figure></div><div id="90370bd8-9075-400d-8207-b56e1ea083ea" style="width:22.119511216622623%" class="column"><figure id="d571b10c-5274-45d5-bf05-c427824374e2" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/js_logo.png"><img style="width:192px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/js_logo.png"/></a></figure></div></div><p id="d6a89433-6de5-4c53-a1ac-b217ab9124dc" class="">
+</p><hr id="95d9f4ad-dac7-48ed-8575-5bb0e1747065"/><p id="150a30d1-2776-4897-8eca-d92cb4ba5a97" class="">
+</p><div id="9ea7cbc3-4cd8-4928-bedd-ce949b38a468" class="column-list"><div id="c1df2c8c-19d4-4212-970c-b0a16a4eadf8" style="width:28.125%" class="column"><p id="60c2031e-1ce0-4da5-89c5-13290bfc37de" class="">
+</p><p id="48b7a1c0-3669-41e6-9c73-46bfbfb7a160" class="">
+</p><h3 id="a2c48855-46dc-4295-b07a-25aaa62c887a" class="">Backend</h3><p id="916db331-fd63-44e3-849f-00809d6daf34" class="">
+</p></div><div id="9287820e-5548-466a-b257-24fd57cc2e18" style="width:15.625%" class="column"><figure id="530815b1-fcdf-49a3-892e-817dbfd38ca5" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/448F6032-24AC-4FB1-937D-31E25A0BAF83_1_201_a.jpeg"><img style="width:144px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/448F6032-24AC-4FB1-937D-31E25A0BAF83_1_201_a.jpeg"/></a></figure></div><div id="496f158f-afd4-4d97-bb92-8e7a8168a330" style="width:28.125%" class="column"><p id="0c1c54cb-2adf-420f-8a40-ae14e8e45a82" class="">
+</p><figure id="fd7a9e1d-8e2a-4981-a5e8-7cbee09386f3" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/spring_boot.png"><img style="width:192px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/spring_boot.png"/></a></figure></div><div id="4740a5dc-ecae-456a-bcee-fe6a6dbf21a4" style="width:28.125000000000032%" class="column"><p id="26a70847-4ba1-4ccc-b300-72fc2e2f83ff" class="">
+</p><figure id="1e36719f-7557-41c1-8355-503166f27599" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/db_logo.png"><img style="width:288px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/db_logo.png"/></a></figure></div></div><div id="ab938f1a-34e9-4d1f-a053-68360fe0f45b" class="column-list"><div id="57e0c2fd-8d2c-473d-9cc6-95ff71f95bb0" style="width:43.75%" class="column"><p id="6a333f49-0ae3-450d-82d7-f5fe31a673a9" class="">
+</p></div><div id="c89c2988-c061-4271-ba08-da1340478ff8" style="width:56.25000000000002%" class="column"><p id="2b6ae707-78a1-46eb-8cf4-d7cc3db62f8d" class="">
+</p></div></div><hr id="f15c0954-fee5-4600-9e73-a9027f169d0c"/><p id="fe46beb4-d819-4f4a-a9d2-e44a4a07de80" class="">
+</p><h2 id="7f0de4b1-81c8-4b5e-89ff-057f975ff368" class="">3. 기획 의도</h2><p id="c5d35699-b25b-439c-9106-5d60204a100b" class="">
+</p><blockquote id="d6bddfef-224d-42f6-b1e3-aaab50cf262d" class="">LIVRE는 중고 책 판매 사이트입니다.</blockquote><blockquote id="3e34c6c3-3fae-4037-ae34-d4692b28b329" class="">개인 대 개인 간의 중고 거래에는 불안과 위험이 따릅니다.</blockquote><blockquote id="f6ac962b-a6c7-4293-9785-c803f1c4f756" class="">중매 회사가 직접 검수를 하고 책 상태에 따른 등급과 합리적인 가격을 매겨 판매한다면 소비자도 믿고 구매할 수 있을 것입니다.</blockquote><blockquote id="2e186dbd-764f-41f7-9925-9f88820a411f" class="">한 홈페이지에서 사용자의 판매와 구매 기능 모두 구현하여 다양성을 높였습니다.</blockquote><p id="cca02ad6-71de-4e07-8406-295379e306f2" class="">
+</p><hr id="0f752472-49ac-4126-bead-23a03888711f"/><p id="3210c16f-e677-498a-a824-4f5707433fbd" class="">
+</p><h2 id="fbc88164-5a1c-4dae-b864-1d4622ce8dfb" class="">4. 페이지 구조</h2><figure id="e651cd45-ee6f-40fb-83c1-b34763c134ee" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/Untitled.png"><img style="width:1008px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/Untitled.png"/></a></figure><p id="9df157e2-14e6-409a-8a2f-e6828858331e" class="">
+</p><hr id="0045c055-f234-453e-b0dc-cb30de290cd7"/><h2 id="6cfb031a-2295-4b9f-8f29-7efa6a3c677f" class="">5. API 명세서</h2><p id="0640e04d-e462-4b67-bfca-681de88e3ca2" class="">
+</p><h3 id="31274000-852e-42bf-a80f-6cf992b87b42" class="">User (회원)</h3><ul id="ac7c5db4-d359-4303-b95a-0b1c55b05d67" class="bulleted-list"><li><strong>회원 가입</strong><ul id="5a6dfb8a-b636-49f8-82ec-d957d31e138f" class="bulleted-list"><li>회원 가입 시, 필수 항목 값을 입력하고 유효성 체크를 만족해야 가입이 가능하다.</li></ul><ul id="4ed0105f-cbb2-4b0e-a5d2-fc2d8ee5747a" class="bulleted-list"><li>아이디 중복 체크는 AJax를 통해 검사하며, 중복된 아이디일 경우엔 비밀번호 불일치 alert창을 띄운다.</li></ul><ul id="a8952a3e-e074-4907-811b-cde175464a71" class="bulleted-list"><li>아이디, 비밀번호, 이메일, 연락처 중 한 항목이라도 미 입력시 데이터를 submit 하지 않는다.</li></ul><ul id="fefad15d-9936-4e1b-9f6c-7a1e0b69532c" class="bulleted-list"><li>&#x27;우편번호 찾기&#x27; 버튼을 누를 시 Daum API 창을 띄워 진행하고, 주소 선택 후 우편 번호와 주소가 자동으로 입력되며, 상세주소는 사용자가 직접 입력한다.</li></ul><p id="263decfe-0889-4cfe-aa86-896632ccbb15" class="">
+</p></li></ul><ul id="b0a8abac-c9da-45d5-8297-32c8469086c4" class="bulleted-list"><li><strong>로그인</strong><ul id="bea7e109-2d4d-4137-a9b8-4f2b0d184918" class="bulleted-list"><li>아이디와 비밀번호를 입력받아 로그인 한다.</li></ul><ul id="5d369f98-cad0-419b-99b2-d51ffcc6d5f6" class="bulleted-list"><li>아이디 혹은 비밀번호가 일치하지 않을 경우, alert 창으로 안내 메시지가 출력된다.</li></ul><p id="d9d7d72d-eb5c-4603-b649-822c5e3afa17" class="">
+</p></li></ul><ul id="d7419991-6594-4959-b3ae-bd2c4fcd45e7" class="bulleted-list"><li><strong>아이디 찾기</strong><ul id="6807549e-b952-4799-ba1f-ac992e1759d6" class="bulleted-list"><li>이름, 생일, 핸드폰, 이메일을 알맞게 입력해야 한다.</li></ul><ul id="16e74940-e51c-45f7-b4c1-bc53f6b38e0d" class="bulleted-list"><li>입력된 정보와 DB가 불일치 할 경우 alert창으로 메시지 출력</li></ul><ul id="92973c20-eb7e-4e4d-a4b9-be460fda4d25" class="bulleted-list"><li>일치할 경우 alert창으로 아이디를 출력한다.</li></ul><p id="564a4139-3fa0-464e-ae22-b95b5e39974f" class="">
+</p></li></ul><ul id="88d86174-0a42-4608-914a-fb2cdacc5184" class="bulleted-list"><li><strong>비밀번호 찾기</strong><ul id="e9d45882-10c0-4f25-8a04-cc9249bf00bb" class="bulleted-list"><li>아이디를 입력 후 회원가입시 입력한 질문, 답변이 일치하면 비밀번호 변경 페이지로 넘어간다.</li></ul><ul id="396045fb-b836-4836-98a8-f982c27908c4" class="bulleted-list"><li>변경할 비밀번호와 확인 항목을 일치하게 입력하면 비밀번호가 변경된다.</li></ul><p id="db8ea471-9542-438d-ae2b-f6c2df256abf" class="">
+</p></li></ul><ul id="c0b5b6a6-6b03-4917-a86f-d8c07b3364c7" class="bulleted-list"><li><strong>게시물 목록</strong><ul id="fb4a4b92-c10e-4051-9b6d-0d41fb4cedf4" class="bulleted-list"><li>관리자가 전체 공개로 설정한 게시물만 확인할 수 있다.</li></ul><ul id="b54a8514-507d-45b1-b70a-f6b6ebaa6923" class="bulleted-list"><li>검색 기능 (책 이름, 저자, 출판사 별로 검색할 수 있다.)</li></ul><ul id="45d13e44-4c1f-4e7c-9b9d-93fda621e28f" class="bulleted-list"><li>메뉴 버튼으로 게시물을 장르별로 확인할 수 있다.</li></ul><ul id="f9af4c4b-0423-4b69-9c39-89bbaf207194" class="bulleted-list"><li>페이징 기능으로 한 페이지당 9개의 게시물로 구성되어있다. </li></ul><p id="b74ab53e-3882-48c5-a989-6fa9cf93bdf2" class="">
+</p></li></ul><ul id="7f119f68-81bf-48a4-a085-865311885e1b" class="bulleted-list"><li><strong>판매 게시물 작성</strong><ul id="9696afd4-816a-4f52-8a6c-5e32ddb5d680" class="bulleted-list"><li>판매하고 싶은 책의 정보를 입력한다.</li></ul><ul id="3a3b9c22-365c-44cd-8ef2-7f87499ad675" class="bulleted-list"><li>필수 사항을 입력하지 않았을 시 데이터가 submit 되지 않는다.</li></ul><ul id="5bc00ad2-780c-4fcc-a50b-2c5c4a70e0e9" class="bulleted-list"><li>책의 장르를 체크박스로 선택 시 중복 불가. (하나만 선택 가능)</li></ul></li></ul><p id="bd815253-91d1-4478-ae5e-11c5f6ada682" class="">
+</p><ul id="1f6a6290-a69f-4af6-b888-dc0219841155" class="bulleted-list"><li><strong>회원 정보 수정</strong><ul id="87dabfd2-0265-4d20-b534-59b6052947d2" class="bulleted-list"><li>아이디와 비밀번호를 제외한 항목을 수정할 수 있다.</li></ul><ul id="7b045e7d-0417-4d8c-8eda-80c7c51e241e" class="bulleted-list"><li>수정 완료 버튼으로 변경된 내용을 DB에 저장한다.</li></ul></li></ul><ul id="f63101c5-f7f2-4315-befe-d44d2ce3d8aa" class="bulleted-list"><li><strong>My Page</strong><ul id="dd42e634-b710-45ed-be68-715a7ebc7770" class="bulleted-list"><li>security의 authorize 속성으로 회원 로그인 시에만 &#x27;My Page&#x27; 버튼이 보여지도록 설정하였다.</li></ul><ul id="02f1ab1a-10e6-4c80-9783-8eb8272ddebc" class="bulleted-list"><li>내 정보에서 회원가입 정보와 계정에서 작성한 글을 확인할 수 있다.</li></ul><ul id="e246c97c-a5da-4739-8b55-f91a7cce8671" class="bulleted-list"><li>회원정보를 수정할 수 있다.</li></ul><ul id="be9c96f3-58db-4e2c-9b9e-91bb251ff8fb" class="bulleted-list"><li>회원이 작성한 게시물을 관리자가 수취 승인 시 삭제, 수정할 수 없다.</li></ul><ul id="98ee60c5-bb25-4bb8-a2f1-063218207a7f" class="bulleted-list"><li>관리자가 수취 승인을 한 경우 운송장 입력 버튼이 생성된다.</li></ul><ul id="055e75be-af2e-47c6-8590-df84b5034479" class="bulleted-list"><li>운송장 입력 버튼 클릭시 모달 창으로 운송장 번호를 입력받는다.</li></ul><ul id="89b76748-b1b1-424e-8372-d20f41bfe2c8" class="bulleted-list"><li>장바구니 페이지에서 회원이 담은 책을 확인 • 삭제할 수 있다.</li></ul><ul id="04162d34-b7ee-4f31-99cd-25c3076bbbce" class="bulleted-list"><li>주문 내역 페이지에서 결제 최소, 교환, 반품 신청할 수 있다.</li></ul></li></ul><p id="7c971ea8-231c-4219-bc29-c81c353db8a0" class="">
+</p><h3 id="9df57b80-ef51-4f12-b44d-2a94faa65e8c" class="">Admin(관리자)</h3><ul id="9d4d29b2-a7b7-45d4-9f4c-e48d36b779ab" class="bulleted-list"><li><strong>전체 게시물 리스트</strong><ul id="5961cdcc-d320-47f4-a5a8-2bd5e7fb8323" class="bulleted-list"><li>공개 범위를 boolean 타입을 지정하여 &#x27;0&#x27;이면 관리자만, &#x27;1&#x27;이면 일반 사용자와 관리자 모두 공개된다.</li></ul><ul id="3dc8812c-879b-42e4-be5e-602d8fe3a8cc" class="bulleted-list"><li>책의 정보를 수정 • 삭제할 수 있다.</li></ul></li></ul><p id="b9be8f3b-ed0a-4998-9416-dc9bea851367" class="">
+</p><ul id="a67e525a-700a-426c-b8f6-c9a29d92b202" class="bulleted-list"><li><strong>수취 관리, 배송 관리, 교환/반품 관리</strong><ul id="78022c3e-05d3-447a-96a2-a7ba945f1dfd" class="bulleted-list"><li>select 태그로 작성된 책의 상태를 변경할 수 있다.</li></ul></li></ul><p id="cf3ad173-dcf2-4b22-b615-562468eaa1b0" class="">
+</p><p id="f93fd7a7-9859-4165-bbc9-e34f3799dd75" class="">
+</p><hr id="0da8854e-dff8-48f8-8188-e6b117e14ef4"/><p id="528cf44e-fa71-4af2-b870-bbab71c3cb5d" class="">
+</p><h2 id="74d8861d-6fae-4670-b886-77b7dfb1f87d" class="">6. DB 명세서</h2><figure id="ff4ae69b-1ab8-4e3d-bad1-05b5ba6cacbc" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/Untitled%201.png"><img style="width:2200px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/Untitled%201.png"/></a></figure><p id="ba05c632-7695-46f4-b91e-641041aa053c" class="">
+</p><hr id="455224d1-7721-4130-b50b-9f34af76375a"/><p id="4a285f9d-d476-45c9-829a-639d8f6c6319" class="">
+</p><h2 id="e031b878-ce71-404a-98ea-df2de09bfc79" class="">7. 장점 및 단점</h2><p id="c058855d-1ba9-4692-99b7-7c22956aa170" class="">
+</p><div id="2f5221c4-7af6-4b88-bd90-4e521d45be86" class="column-list"><div id="781e897a-82b6-42df-a47f-862ed92bd9b7" style="width:50%" class="column"><h3 id="81058663-06b2-40d6-b5bf-836c205f76b5" class="">✏️  장점</h3><p id="5ddbe262-e513-4966-9e79-44be2fe03bde" class="">
+</p><hr id="e20509c1-dc35-45e7-8453-defb5f449649"/></div><div id="a7be69b9-e9a8-47de-aa0f-626e01e29a37" style="width:50%" class="column"><h3 id="947ebd3a-6113-4d71-8f4a-8891394e2861" class="">✏️  단점</h3><p id="11b5f740-178a-4c93-bd7c-4a0cb6a7b262" class="">
+</p><hr id="aa05685a-e8f7-4aa5-a27a-d4856f14ad99"/></div></div><div id="4402a211-f2eb-4641-ad5c-17317148d979" class="column-list"><div id="7b51fc97-6a00-483d-bcfe-93ded853a039" style="width:50%" class="column"><h3 id="a161b271-e80b-4be4-8566-ea88bc43f98c" class="">✓ MVC 패턴을 사용하여 높은 확장성과 유연성을 가짐.</h3></div><div id="2b188a36-8b82-47e9-aee9-62aafdf91431" style="width:50%" class="column"><h3 id="ad8ce6f3-a78d-4008-ba7d-a6eadc35f3d6" class=""> ✓ 리뷰 작성 기능이 없음.</h3></div></div><div id="b0fdb97d-38a8-44a7-8c29-6ae110abe7d2" class="column-list"><div id="cedc70e0-738b-43bc-8c72-e448aa988066" style="width:50%" class="column"><h3 id="376b0f80-03a1-4ed5-aaef-2c8e3b30095e" class="">✓ Mybatis를 사용하여 유지보수가 쉬움.</h3></div><div id="e23ca79a-3892-49c5-a688-de9bb81942cf" style="width:50%" class="column"><h3 id="d2080f3e-7cd7-438f-bdb8-3357d2cee937" class="">✓ 구매 기능을 완벽히 구현하지 못함.</h3><p id="17ecb39d-2389-4dbe-ba11-2be88451d260" class="">
+</p><p id="4b3092fc-43f2-4a7b-a46f-b6549dac2f9e" class="">
+</p></div></div><hr id="3ae7117f-ee8f-4b16-b026-d7919e9e229e"/><p id="24d8371b-d190-42f5-82cb-b06218be4777" class="">
+</p><h2 id="360dff85-3c54-4560-ade1-f47809d26186" class="">8. 프로젝트 소감</h2><p id="c4d1ba48-15e4-4020-9e13-42dd2b10859a" class="">
+</p><h3 id="b0cc92f6-0618-4b8b-b965-596743fbcee6" class="">이용준 팀장</h3><div id="96feae5a-4905-40d2-a1e1-155dd0d5aa77" class="column-list"><div id="43c203dc-a42a-4aad-8839-224ee5208f5b" style="width:6.25%" class="column"><figure id="b4b133f2-8596-4ef9-bac1-6e3bfb8701b9" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/IMG_4287.jpg"><img style="width:240px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/IMG_4287.jpg"/></a></figure></div><div id="ff18de29-c3b4-48ab-aad2-b945727c7ab0" style="width:93.75%" class="column"><blockquote id="cd296736-8254-4bce-ba07-4b1db3d2b46e" class="">첫 3주 동안 코로나 2.5단계로 Zoom으로 회의를 진행할 땐 막막했지만, 거리두기 단계가 완회되어 오프라인으로 프로젝트를 할 수 있어서 다행이었다. 조장으로서 팀원들이 잘 따라와줘서 너무 고마웠고, 처음엔 모두 부족했지만 갈수록 개발실력이 향상되는 것을 느껴 뿌듯했다.</blockquote></div></div><p id="e501b67c-63d3-428e-9f6d-b9ba73f79823" class="">
+</p><p id="faad5314-d3b6-458a-ab18-bc7855cc60c8" class="">
+</p><h3 id="189302c1-48b9-4014-939a-9db831a052e7" class="">신가은 팀원</h3><div id="a2ea309c-79a9-40fd-9aef-1fa1a0d3fe78" class="column-list"><div id="9efd4c9f-73f2-483c-9caf-c9ca465a240d" style="width:6.25%" class="column"><figure id="84e7bfcf-0a70-4745-92c0-8a6a73198f5d" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/3472403969948774965_20200807155916726.jpg"><img style="width:240px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/3472403969948774965_20200807155916726.jpg"/></a></figure></div><div id="15e07941-ba65-4457-aae2-9adce6f09f97" style="width:93.75%" class="column"><blockquote id="8ccad828-e21a-4545-b6cc-a2b94b856f94" class="">강의를 듣는 것 보다 더욱 넓고 깊게 배울 수 있었다. 학원에서 프로젝트를 하지 못한 것이 아쉬웠지만 우리 팀 나름대로 매일 모여서 머리를 맞대어 결과물을 내어서 뿌듯했다. 처음엔 막막했지만 점점 페이지를 만들어 기능을 구현하다 보니 어느덧 완성이었다. 
+오류와 씨름하는 것이 마냥 힘들지만은 않았다.</blockquote></div></div><p id="73bac921-696b-4ca6-abaf-a41494e44072" class="">
+</p><p id="b1a1dda7-d6bd-43e9-953e-eddae9df629c" class="">
+</p><h3 id="793907bf-d799-4ce1-a0f5-f1f4cd1ba402" class="">권기완 팀원</h3><div id="2601ea47-b646-4f38-a22f-8521c6c9396e" class="column-list"><div id="7bde5146-abb3-4cc8-86a0-ba863fa61aef" style="width:6.25%" class="column"><figure id="924bb9ef-e838-4bc8-b2bd-993efec7540d" class="image"><a href="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/KakaoTalk_20210305_163425884.jpg"><img style="width:240px" src="LIVRE%20%5B%20%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%8E%E1%85%A2%E1%86%A8%20%E1%84%80%E1%85%A5%E1%84%85%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%5D%20d45b91ceda554e51a7127b6dccef75f0/KakaoTalk_20210305_163425884.jpg"/></a></figure></div><div id="941d7205-e7a4-4bce-8578-a77b863cecd3" style="width:93.75%" class="column"><blockquote id="07fc9b37-58ef-4029-9314-91c084d993ee" class="">프로젝트 기간동안 주말을 제외하고는 거의 매일 만나서 진행하였고, 그로 인해 협동심도 생기고 친해지면서 더더욱 좋은 결과물을 만들어 낸 것 같다. 또한 강의를 듣는 것도 많은 도움이 됐지만, 팀원들과 소통하면서 직접 프로그래밍을 하는 과정이 개발실력에 더 많은 도움이 되었다.</blockquote></div></div><p id="f0c0ab67-057f-411b-b395-7ace7ee565d3" class="">
+</p></div></article></body></html>
